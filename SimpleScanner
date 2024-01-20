@@ -1,0 +1,15 @@
+#!/bin/bash
+
+echo "Entering the IP Address:"
+read FirstIP
+
+echo "Entering the last octet of IP Address to make a range:"
+read range
+
+echo "Enter the port you want to scan for:"
+read Port
+
+nmap -sT $FirstIP-$range -p $Port >/dev/null -oG MyScan
+
+cat MyScan | grep open > MyScan2
+cat MyScan2
